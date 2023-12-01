@@ -9,6 +9,7 @@ import {
 import React from 'react'
 import { WagmiConfig } from 'wagmi'
 import { arbitrum, mainnet } from 'viem/chains'
+import GetAccount from './getAccount'
   
   // @ts-expect-error 1. Get projectId
   const projectId = import.meta.env.VITE_PROJECT_ID
@@ -40,6 +41,7 @@ import { arbitrum, mainnet } from 'viem/chains'
     }
   })
   
+
   export default function App() {
     // 4. Use modal hook
     const modal = useWeb3Modal()
@@ -49,6 +51,7 @@ import { arbitrum, mainnet } from 'viem/chains'
   
     return (
       <WagmiConfig config={wagmiConfig}>
+        <GetAccount />
         <w3m-button />
         {/*<w3m-network-button />
         <w3m-connect-button />
