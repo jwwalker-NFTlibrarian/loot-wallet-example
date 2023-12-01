@@ -6,8 +6,9 @@ import {
     useWeb3ModalState,
     useWeb3ModalTheme
   } from '@web3modal/wagmi/react'
-  import { WagmiConfig } from 'wagmi'
-  import { arbitrum, mainnet } from 'wagmi/chains'
+import React from 'react'
+import { WagmiConfig } from 'wagmi'
+import { arbitrum, mainnet } from 'viem/chains'
   
   // @ts-expect-error 1. Get projectId
   const projectId = import.meta.env.VITE_PROJECT_ID
@@ -16,14 +17,16 @@ import {
   }
   
   // 2. Create wagmiConfig
-  const chains = [mainnet, arbitrum]
+  const chains = [mainnet, arbitrum];
+
   const wagmiConfig = defaultWagmiConfig({
-    chains,
     projectId,
+    chains,
     metadata: {
       name: 'Web3Modal React Example'
     }
   })
+  console.log(wagmiConfig)
   
   // 3. Create modal
   createWeb3Modal({
@@ -47,7 +50,7 @@ import {
     return (
       <WagmiConfig config={wagmiConfig}>
         <w3m-button />
-        <w3m-network-button />
+        {/*<w3m-network-button />
         <w3m-connect-button />
         <w3m-account-button />
   
@@ -58,7 +61,7 @@ import {
         </button>
         <pre>{JSON.stringify(state, null, 2)}</pre>
         <pre>{JSON.stringify({ themeMode, themeVariables }, null, 2)}</pre>
-        <pre>{JSON.stringify(events, null, 2)}</pre>
+    <pre>{JSON.stringify(events, null, 2)}</pre>*/}
       </WagmiConfig>
     )
   }
